@@ -1,0 +1,46 @@
+@startuml
+title Git Workflow
+footer https://github.com/acnaweb/git
+
+actor Developer
+entity "Untracked" as Untracked
+entity "Index (Staging Area)" as Index
+entity "HEAD" as HEAD
+entity "Repositório Local" as Local
+entity "Branch Local" as LocalBranch
+entity "Remote Repo" as Remote #LightBlue
+entity "Remote Branch" as RemoteBranch #LightBlue
+
+== Fluxo de Push  ==
+
+Developer -> Untracked: Criar/Alterar arquivo
+Untracked -> Index: `git add` (Adiciona ao índice)
+Index -> HEAD: Criar Commit (`git commit -m "Mensagem"`)
+HEAD -> Index: Salva alterações no HEAD
+Index -> Remote: Enviar alterações (`git push`)
+Remote -> Index: Atualiza o repositório remoto
+
+== Fluxo de Pull  ==
+
+Developer -> Remote: `git pull -r` (Puxa alterações + resolve conflitos)
+Remote -> Index: Envia alterações para o repositório local
+Index -> HEAD: Atualiza com as últimas alterações do remoto
+
+
+== Fluxo de Diff  ==
+
+Developer -> HEAD: `git diff` (Ver diferenças)
+HEAD -> Index: Compara diferenças locais com o índice
+HEAD -> Remote: Compara alterações locais com o remoto
+
+== Fluxo de Criação e Troca de Branch ==
+Developer -> Local: Criar nova branch (`git checkout -b nova-branch`)
+Local -> LocalBranch: Nova branch criada
+Developer -> LocalBranch: Trabalhar na nova branch (alterações nos arquivos)
+Developer -> Local: `git add` e `git commit` (Adicionar e commitar mudanças na nova branch)
+Developer -> Remote: `git push -u origin nova-branch` (Criar branch remota)
+Remote -> RemoteBranch: Nova branch criada no repositório remoto
+Developer -> Local: Trocar de branch (`git switch master`)
+LocalBranch -> Local: Altera para a branch master
+
+@enduml
