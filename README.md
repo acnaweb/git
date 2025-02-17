@@ -33,8 +33,22 @@ Este tutorial irá guiá-lo no processo de criação de um repositório no GitHu
    ```bash
    git clone https://github.com/usuario/meu-repositorio.git
 
+## Commits
+
+### Exemplos de Boas Mensagens de Commit
+
+| Tipo             | Exemplo de Mensagem                                        |
+|------------------|------------------------------------------------------------|
+| **Adição de Funcionalidade** | `feat: add user authentication with JWT`                  |
+| **Correção de Bug**         | `fix: correct bug in the email validation logic`            |
+| **Refatoração de Código**   | `refactor: simplify user registration logic`                |
+| **Documentação**            | `docs: update README with installation instructions`         |
+| **Melhoria de Performance** | `perf: optimize image loading on homepage`                  |
+| **Testes**                  | `test: add unit tests for user registration module`         |
+| **Atualização de Dependências** | `chore: update lodash to version 4.17.21`             |
+| **Remoção de Funcionalidade** | `remove: delete deprecated user profile API endpoint`   |
+| **Configuração**            | `config: add ESLint configuration for React projects`      |
+
 ## Git Workflow
 
 ![](out/diagrams/git-workflow/git-workflow.png)
-
-## Git Sh
